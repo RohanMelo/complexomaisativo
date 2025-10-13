@@ -4,17 +4,23 @@ import logo from "../assets/cropped-transparent.png"
 ---
 <header class="sticky top-0 z-[2000] shadow-md" style="background: var(--grad-header)">
   <div class="mx-auto w-[90%] max-w-container">
-    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between py-3">
-      <div class="flex items-center gap-3 justify-center">
-        
-        <div class="flex flex-col">
-          <Image src={logo} alt="Complexo Ativo" class="h-32 md:h-34 w-auto object-fill" />
-          <div class="text-secondary font-semibold tracking-widest text-sm text-center">ACADEMIA PERSONALIZADA</div>
+    <div class="py-3 flex flex-col items-center gap-4 lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-center">
+      
+      <a href="#" class="flex items-center gap-3">
+        <div class="flex flex-col items-center lg:items-start">
+          <Image
+            src={logo}
+            alt="Complexo Ativo"
+            class="h-16 md:h-20 lg:h-24 xl:h-28 w-auto object-contain"
+          />
+          <div class="text-secondary font-semibold tracking-widest text-[11px] md:text-xs lg:text-sm leading-none mt-1">
+            ACADEMIA PERSONALIZADA
+          </div>
         </div>
-      </div>
+      </a>
 
-      <nav>
-        <ul class="flex flex-wrap justify-center gap-2 md:gap-6">
+      <nav class="w-full">
+        <ul class="flex flex-wrap justify-center gap-3 md:gap-6">
           <li><a href="#beneficios" class="text-white/90 hover:bg-white/10 rounded px-2 py-1 transition">Benefícios</a></li>
           <li><a href="#grupos" class="text-white/90 hover:bg-white/10 rounded px-2 py-1 transition">Grupos Especiais</a></li>
           <li><a href="#metodologia" class="text-white/90 hover:bg-white/10 rounded px-2 py-1 transition">Metodologia</a></li>
@@ -22,13 +28,17 @@ import logo from "../assets/cropped-transparent.png"
           <li><a href="#mapa" class="text-white/90 hover:bg-white/10 rounded px-2 py-1 transition">Localização</a></li>
         </ul>
       </nav>
-      <div class="flex justify-center items-center w-full md:w-1/2">
-        <a href="https://wa.me/558591803476" target="_blank"
-         class="inline-block rounded-full bg-secondary text-white font-semibold px-6 py-3 shadow hover:-translate-y-[3px] hover:shadow-lg transition text-center">
-        Agende sua aula
-      </a>
+
+      <div class="flex justify-center lg:justify-end">
+        <a
+          href="https://wa.me/558591803476"
+          target="_blank"
+          class="whitespace-nowrap inline-block rounded-full bg-secondary text-white font-semibold px-6 py-3 shadow hover:-translate-y-[3px] hover:shadow-lg transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+        >
+          Agende sua aula
+        </a>
       </div>
-      
+
     </div>
   </div>
 </header>

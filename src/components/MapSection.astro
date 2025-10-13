@@ -1,5 +1,6 @@
 ---
 import Leaflet from "./Leaflet.astro";
+import SectionTitle from "./SectionTitle.astro";
 
 /**
  * Props (all optional):
@@ -20,7 +21,7 @@ const {
 
 <section id="mapa" class="py-20 bg-white">
   <div class="mx-auto w-[90%] max-w-[1000px] text-center">
-    <h2 class="text-3xl font-bold text-primary mb-8">{title}</h2>
+    <SectionTitle title={title} />
 
     <!-- Map container -->
     <div

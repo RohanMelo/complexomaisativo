@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Features from "../components/Features.astro";
+import SpecialGroups from "../components/SpecialGroups.astro";
+import Methodology from "../components/Methodology.astro";
+import Team from "../components/Team.astro";
+import Testimonials from "../components/Testimonials.astro";
+import CTASection from "../components/CTASection.astro";
+import MapSection from "../components/MapSection.astro";
+import Footer from "../components/Footer.astro";
+---
+<BaseLayout
+  title="Complexo Mais Ativo | Personal Trainer Especializado em Grupos Especiais - Fortaleza"
+  description="Treinos personalizados em grupos pequenos para idosos, cardiopatas, diabéticos e outros grupos com necessidades especiais. Fortaleza - CE."
+>
+  <Header />
+  <Hero />
+  <Features />
+  <SpecialGroups />
+  <Methodology />
+  <Team />
+  <Testimonials />
+  <CTASection />
+  <MapSection 
+    address="Rua Carolina Sucupira, 127 - Aldeota, Fortaleza - CE, 60140-120"
+    
+    height="h-[450px]"
+    title="Nossa Localização"
+    placeName="Complexo Mais Ativo" />
+  <Footer />
+</BaseLayout>

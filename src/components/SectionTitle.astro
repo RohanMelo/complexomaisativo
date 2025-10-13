@@ -1,0 +1,10 @@
+---
+const { title, subtitle, light = false } = Astro.props;
+---
+<div class={"text-center mb-12 " + (light ? "text-white" : "text-primary")}>
+  <h2 class="inline-block text-3xl font-bold mb-4 relative">
+    {title}
+    <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-20 h-1 bg-secondary rounded"></span>
+  </h2>
+  {subtitle && <p class={(light ? "text-white/90" : "text-gray-600") + " mt-2"}>{subtitle}</p>}
+</div>

@@ -1,0 +1,24 @@
+---
+import SectionTitle from "./SectionTitle.astro";
+const groups = [
+  { t: "Idosos", d: "Combate à sarcopenia e osteoporose, melhora de equilíbrio e coordenação, prevenção de quedas e ganho de autonomia." },
+  { t: "Cardiopatas e Pneumopatas", d: "Reabilitação cardíaca/pulmonar, melhora da capacidade funcional, controle da fadiga e fortalecimento gradual." },
+  { t: "Diabéticos", d: "Controle glicêmico, redução da resistência à insulina, prevenção de complicações e melhora da qualidade de vida." },
+  { t: "Pacientes Oncológicos", d: "Manutenção da massa muscular, redução da fadiga, melhora do humor e fortalecimento do sistema imunológico." },
+  { t: "Hipertensos", d: "Controle da pressão arterial, redução da medicação, fortalecimento cardiovascular e controle do estresse." },
+  { t: "Obesidade e Síndrome Metabólica", d: "Redução de peso saudável, melhora da composição corporal, aumento da capacidade cardiorrespiratória e controle de comorbidades." },
+];
+---
+<section id="grupos" class="py-20 text-white" style="background: var(--grad-special);">
+  <div class="mx-auto w-[90%] max-w-container">
+    <SectionTitle title="Atendemos Grupos Especiais" subtitle="Especializados em condições de saúde específicas" light />
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {groups.map((g) => (
+        <div class="rounded-lg p-8 bg-white/10 backdrop-blur hover:scale-[1.03] transition">
+          <h3 class="text-accent text-xl font-semibold mb-3">{g.t}</h3>
+          <p class="text-white/90">{g.d}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

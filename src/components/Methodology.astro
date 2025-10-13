@@ -1,0 +1,23 @@
+---
+import SectionTitle from "./SectionTitle.astro";
+const steps = [
+  { n: "1", t: "Avaliação Completa", d: "Análise detalhada da sua condição física, histórico de saúde e objetivos pessoais." },
+  { n: "2", t: "Plano Personalizado", d: "Desenvolvimento de um programa de exercícios específico para suas necessidades." },
+  { n: "3", t: "Acompanhamento Especializado", d: "Integração com fisioterapeuta e esteticista quando necessário." },
+  { n: "4", t: "Treino Supervisionado", d: "Sessões em grupos pequenos com acompanhamento constante do profissional." },
+];
+---
+<section id="metodologia" class="py-20 bg-light">
+  <div class="mx-auto w-[90%] max-w-container">
+    <SectionTitle title="Nossa Metodologia" subtitle="Como transformamos vidas com nosso método exclusivo" />
+    <div class="flex flex-wrap justify-center gap-8 mt-8">
+      {steps.map((s) => (
+        <div class="min-w-[250px] max-w-[300px] text-center p-8 bg-white rounded-lg shadow-card">
+          <div class="w-10 h-10 mx-auto mb-3 rounded-full bg-secondary text-white font-bold leading-10">{s.n}</div>
+          <h3 class="text-lg font-semibold mb-2">{s.t}</h3>
+          <p class="text-gray-700">{s.d}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+---
+import Leaflet from "./Leaflet.astro";
+
+/**
+ * Props (all optional):
+ * - position: { lat: number; lng: number }
+ * - address: string
+ * - zoom: number
+ * - height: tailwind height class (e.g., "h-[450px]")
+ */
+const {
+  
+  address = "Rua Carolina Sucupira, 127 - Aldeota, Fortaleza - CE, 60140-120",
+  
+  height = "h-[450px]",
+  title = "Nossa Localização",
+  
+} = Astro.props;
+---
+
+<section id="mapa" class="py-20 bg-white">
+  <div class="mx-auto w-[90%] max-w-[1000px] text-center">
+    <h2 class="text-3xl font-bold text-primary mb-8">{title}</h2>
+
+    <!-- Map container -->
+    <div
+      id="leafletmap"
+      class={`w-full ${height} rounded-lg shadow-xl border border-gray-100`}
+    >
+    </div>
+
+    <!-- Address line -->
+    <div
+      class="mt-6 inline-block text-base text-secondary bg-light px-4 py-3 rounded"
+    >
+      <i class="fas fa-map-marker-alt mr-2"></i>{address}
+    </div>
+
+    <noscript class="block mt-4 text-sm text-gray-500">
+      Ative o JavaScript para visualizar o mapa.
+    </noscript>
+  </div>
+  <Leaflet
+    container="leafletmap"
+    latitude={-3.740418}
+    longitude={-38.5017429}
+    zoom={17}
+    tileLayer="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    attribution="© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+    containerstyle="width: 312px; height: 256px"
+  />
+</section>

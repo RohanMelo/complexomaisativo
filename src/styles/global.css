@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  --grad-header: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  --grad-feature-icon: linear-gradient(135deg, #e76a2c, #1a1a1a);
+  --grad-special: linear-gradient(135deg, #1a1a1a, #1a2530);
+  --grad-team: linear-gradient(135deg, #e76a2c, #1a1a1a);
+  --color-primary: #1a1a1a;
+  --color-secondary: #e76a2c;
+  --color-accent: #e76a2c;
+  --color-light: #f1faee;
+  --color-dark: #1f2937;
+  --color-grayx: #8d99ae;
+  --shadow-card: 0 5px 15px rgba(0,0,0,0.05);
+  --shadow-cardLg: 0 15px 30px rgba(0,0,0,0.1);
+  --max-width-container: 1200px;
+}
+

@@ -1,0 +1,24 @@
+---
+import SectionTitle from "./SectionTitle.astro";
+import { Image } from "astro:assets";
+import personal from "../assets/personal.png"
+---
+<section id="equipe" class="py-20 text-white" style="background: var(--grad-team);">
+  <div class="mx-auto w-[90%] max-w-container">
+    <SectionTitle title="Nossa Equipe" subtitle="Liderada por um especialista em fisiologia do exercício" light />
+    <div class="max-w-3xl mx-auto text-center flex flex-col items-center rounded-lg p-8 bg-white/10 backdrop-blur">
+      <div class="w-36 h-36 rounded-full bg-light mb-6 border-2 shadow-md border-white flex items-center justify-center text-6xl text-primary scale-100">
+        <Image src={personal} alt="Rodrigo Leite" class="object-contain rounded-full" />
+      </div>
+      <div>
+        <h3 class="text-2xl font-semibold mb-1">Rodrigo Leite Furtado</h3>
+        <div class="text-accent font-semibold mb-3">Diretor Técnico e Especialista em Treinamento</div>
+        <div class="inline-block px-4 py-1 rounded-full bg-black/20">CREF 7860</div>
+        <p class="mt-4 text-white/90">
+          Especialista em treinamento esportivo, Mestre e Doutorando em Fisiologia com mais de 15 anos de experiência.
+          Rodrigo lidera nossa equipe especializada com metodologia exclusiva focada em resultados para grupos especiais.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

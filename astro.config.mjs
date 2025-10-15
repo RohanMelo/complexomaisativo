@@ -8,5 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
 	vite: {
     plugins: [tailwindcss()]
-  }
+  },
+  site: 'https://rohanmelo.github.io/complexomaisativo/',
+  base: '/complexomaisativo/'
 });

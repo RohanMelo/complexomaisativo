@@ -1,0 +1,126 @@
+---
+// src/components/EsteticaSpecialist.astro
+import { Image } from "astro:assets";
+
+export interface Props {
+  id?: string;
+  photoSrc?: ImageMetadata | string;
+  heading?: string;
+  highlight?: string;
+  name?: string;
+  subtitle?: string;
+  paragraphs?: string[];
+  class?: string;
+}
+
+
+const {
+  id = "especialista",
+  photoSrc = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop",
+  heading = "Conheça o especialista que vai cuidar",
+  highlight = "DE VOCÊ",
+  name = "Weverton Dutra",
+  subtitle = "Professor universitário de estética e sócio da Mais Estética",
+  paragraphs = [
+    "Seu compromisso com a beleza saudável une conhecimento técnico com acolhimento e empatia.",
+    "Cada atendimento é personalizado, respeitando seu tempo, pele e rotina.",
+  ],
+  class: className = "",
+} = Astro.props;
+---
+
+<section id={id} class={`relative isolate overflow-hidden py-16 md:py-20 pb-24 ${className}`} style="background-color:#efe9e2">
+  <!-- asymmetrical background decorations (non-interactive) -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-28 -z-10">
+    <!-- grey speckle band -->
+    <svg class="h-full w-full" viewBox="0 0 1200 160" preserveAspectRatio="none">
+      <defs>
+        <pattern id="speckles" width="24" height="24" patternUnits="userSpaceOnUse">
+          <circle cx="4" cy="6" r="1.2" fill="#bfbab3" />
+          <circle cx="16" cy="12" r="1" fill="#c7c2bb" />
+          <circle cx="10" cy="20" r="1.2" fill="#b9b4ad" />
+          <circle cx="20" cy="4" r="1.1" fill="#bfbab3" />
+        </pattern>
+      </defs>
+      <rect width="1200" height="160" fill="url(#speckles)"></rect>
+    </svg>
+  </div>
+
+  <!-- terracotta corner (bottom-right, intentionally not symmetrical) -->
+  <div aria-hidden="true" class="pointer-events-none absolute -bottom-12 -right-8 w-[42vw] max-w-[520px] -z-10 [mask-image:linear-gradient(to_top_left,black_45%,transparent_55%)]">
+    <svg viewBox="0 0 600 400" class="w-full h-auto">
+      <defs>
+        <pattern id="leafy" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M28 14c10 6 10 18 0 24c-10-6-10-18 0-24Z" fill="rgba(255,255,255,0.25)"/>
+          <path d="M8 38c10 6 10 18 0 24c-10-6-10-18 0-24Z" fill="rgba(255,255,255,0.2)"/>
+          <path d="M48 38c10 6 10 18 0 24c-10-6-10-18 0-24Z" fill="rgba(255,255,255,0.18)"/>
+        </pattern>
+        <clipPath id="angled">
+          <!-- a soft angled polygon for that imperfect corner -->
+          <path d="M600,120 L520,400 L60,400 L480,280 Z" />
+        </clipPath>
+      </defs>
+      <rect width="600" height="400" fill="var(--color-estetica-secondary)"/>
+      <rect width="600" height="400" fill="url(#leafy)" clip-path="url(#angled)"/>
+    </svg>
+  </div>
+
+  <div class="mx-auto w-[90%] max-w-container">
+    <!-- Title -->
+    <header class="mb-10 md:mb-12 text-center">
+      <h2 class="inline-block text-3xl md:text-4xl font-bold text-[color:var(--color-estetica-dark)] leading-tight">
+        {heading}
+        <br />
+        <span class="text-[color:var(--color-estetica-secondary)]">{highlight}</span>
+      </h2>
+      <div
+        class="mx-auto mt-3 h-[3px] w-20 rounded-full"
+        style="background-color: var(--color-estetica-secondary);"
+      />
+    </header>
+
+    <!-- Content -->
+    <div class="relative z-10 grid items-center gap-8 md:gap-10 lg:grid-cols-2">
+      <!-- Photo with organic blob & ring -->
+      <figure class="relative mx-auto w-full max-w-[520px]">
+        <!-- blob ring -->
+        <svg aria-hidden="true" class="absolute -inset-4 -z-10" viewBox="0 0 600 600">
+          <defs>
+            <linearGradient id="ring" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stop-color="var(--color-estetica-secondary)" stop-opacity="0.9" />
+              <stop offset="100%" stop-color="var(--color-estetica-secondary)" stop-opacity="0.6" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M420,80c80,30,140,110,140,200s-40,180-140,220-210,10-270-60S10,250,80,170,260,40,420,80Z"
+            fill="none" stroke="url(#ring)" stroke-width="28"
+          />
+        </svg>
+
+        <!-- clipped photo -->
+        <svg viewBox="0 0 600 600" class="w-full h-auto">
+          <defs>
+            <clipPath id="blob">
+              <path d="M420,80c80,30,140,110,140,200s-40,180-140,220-210,10-270-60S10,250,80,170,260,40,420,80Z" />
+            </clipPath>
+          </defs>
+          <!-- eslint-disable-next-line @typescript-eslint/ban-ts-comment -->
+          <!-- @ts-ignore: allow string | ImageMetadata -->
+          <image href={typeof photoSrc === 'string' ? photoSrc : photoSrc.src}
+                 width="600" height="600" preserveAspectRatio="xMidYMid slice" clip-path="url(#blob)" />
+          <rect x="0" y="0" width="600" height="600" clip-path="url(#blob)" fill="transparent" />
+        </svg>
+        <figcaption class="sr-only">{name}</figcaption>
+      </figure>
+
+      <!-- Text -->
+      <div class="text-[color:var(--color-estetica-dark)]">
+        <h3 class="text-2xl md:text-3xl font-semibold mb-2">{name}</h3>
+        <p class="text-[color:var(--color-estetica-primary)] font-medium mb-5">{subtitle}</p>
+        {paragraphs.map((p) => (
+          <p class="mb-4 text-lg leading-8">{p}</p>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

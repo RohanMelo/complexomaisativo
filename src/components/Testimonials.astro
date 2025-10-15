@@ -1,51 +1,134 @@
 ---
 import SectionTitle from "./SectionTitle.astro";
 import { Image } from "astro:assets";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./starwind/carousel";
+import avatarMauro from "../assets/avatar-mauro.png";
+import avatarNico from "../assets/avatar-nico.png";
+import avatarWilma from "../assets/avatar-wilma.png";
 const items = [
   {
-    quote: 'Após meu infarto, pensei que nunca mais faria exercícios. O Complexo Mais Ativo me deu nova vida com treinos seguros e acompanhamento profissional excepcional!',
-    name: "Carlos Silva",
-    role: "Paciente Cardíaco",
-    src: "https://i.pravatar.cc/150?img=69"
+    quote:
+      "O Complexo Mais Ativo me deu nova vida com treinos seguros e acompanhamento profissional excepcional!",
+    name: "Wilma Melo",
+    role: "Aluna há 1 ano",
+    src: avatarWilma.src
   },
   {
-    quote: "Como idosa com osteoporose, encontrei no Complexo Mais Ativo um lugar onde me sinto segura e acompanhada. Melhorei meu equilíbrio e força em poucos meses.",
+    quote:
+      "Como idosa com osteoporose, encontrei no Complexo Mais Ativo um lugar onde me sinto segura e acompanhada. Melhorei meu equilíbrio e força em poucos meses.",
     name: "Maria Oliveira",
     role: "Aluna há 1 ano",
-    src: "https://i.pravatar.cc/150"
+    src: "https://i.pravatar.cc/150",
   },
   {
-    quote: "Consegui controlar minha diabetes tipo 2 com a combinação de exercícios orientados e acompanhamento nutricional. Minha glicemia nunca esteve tão estável!",
+    quote:
+      "Consegui controlar minha diabetes tipo 2 com a combinação de exercícios orientados e acompanhamento nutricional. Minha glicemia nunca esteve tão estável!",
     name: "Roberta Santos",
     role: "Aluna há 8 meses",
-    src: "https://i.pravatar.cc/150?img=3"
+    src: "https://i.pravatar.cc/150?img=3",
   },
+  {
+    quote: "Sentia muitas dores por uma hérnia extrusa e foi feito todo um trabalho de fortalecimento me permitindo hj fazer qualquer atividade física",
+    name: "Mauro Neto",
+    role: "Aluno",
+    src: avatarMauro.src
+  },
+  {
+    quote: "Excelente academia com profissionais super qualificados e turmas pequenas! :)",
+    name: "Nicole Wirtzbiki",
+    role: "Aluna",
+    src: avatarNico.src
+  },
+  {
+    quote: "Uma verdadeira academia e centro de bem-estar! O complexo mais ativo se dedica a entender as necessidades físicas e mentais de cada cliente.",
+    name: "Felipe Costa",
+    role: "Aluno há 2 anos",
+    src: "https://i.pravatar.cc/150"
+  }
 ];
 ---
+
 <section class="py-20 bg-primary text-white">
   <div class="mx-auto w-[90%] max-w-container">
-    <SectionTitle title="Avaliações de Clientes" subtitle="O que nossos alunos dizem sobre a experiência no Complexo Mais Ativo" light />
-    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      {items.map((t) => (
-        <div class="relative rounded-lg p-8 bg-white/5 shadow-card">
-          <div class="text-yellow-400 mb-3 text-lg">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <div class="relative z-[1]">
-            <p class="text-white/90">{`"${t.quote}"`}</p>
-            <div class="flex items-center mt-6">
-              <div class="w-14 h-14 rounded-full bg-light text-primary flex items-center justify-center text-2xl mr-4">
-                <img src={t.src} alt="avatar" class="object-contain rounded-full" />
+    <SectionTitle
+      title="Avaliações de Clientes"
+      subtitle="O que nossos alunos dizem sobre a experiência no Complexo Mais Ativo"
+      light
+    />
+
+    <Carousel
+      id="carousel-autoplay"
+      autoInit={false}
+      opts={{ align: "start", loop: true }}
+      class="mx-auto w-full max-w-xs"
+    >
+      <CarouselContent>
+        {
+          items.map((t) => (
+            <CarouselItem>
+              <div class="relative h-[280px] rounded-lg p-6 bg-white/5 shadow-card flex flex-col justify-between">
+                <div class="text-yellow-400 mb-3 text-lg">
+                  <>
+                    <i class="fas fa-star" />
+                    <i class="fas fa-star" />
+                    <i class="fas fa-star" />
+                    <i class="fas fa-star" />
+                    <i class="fas fa-star" />
+                  </>
+                </div>
+                <div class="relative z-[1]">
+                  <p class="text-white/90">{`"${t.quote}"`}</p>
+                  <div class="flex items-center mt-6">
+                    <div class="w-14 h-14 rounded-full bg-light text-primary flex items-center justify-center text-2xl mr-4">
+                      <img
+                        src={t.src}
+                        alt="avatar"
+                        class="object-contain rounded-full"
+                      />
+                    </div>
+                    <div>
+                      <strong class="block">{t.name}</strong>
+                      <div class="text-white/80 text-sm">{t.role}</div>
+                    </div>
+                  </div>
+                </div>
+                <span class="absolute top-2 left-4 text-6xl text-secondary/20 font-serif select-none">
+                  "
+                </span>
               </div>
-              <div>
-                <strong class="block">{t.name}</strong>
-                <div class="text-white/80 text-sm">{t.role}</div>
-              </div>
-            </div>
-          </div>
-          <span class="absolute top-2 left-4 text-6xl text-secondary/20 font-serif select-none">"</span>
-        </div>
-      ))}
-    </div>
+            </CarouselItem>
+          ))
+        }
+      </CarouselContent>
+      
+    </Carousel>
   </div>
 </section>
+
+<script>
+  import Autoplay from "embla-carousel-autoplay";
+
+  import { initCarousel } from "@/components/starwind/carousel";
+
+  function initAutoplayCarousel() {
+    const carouselElement = document.getElementById("carousel-autoplay");
+    if (!carouselElement) return;
+    initCarousel(carouselElement, {
+      plugins: [
+        Autoplay({
+          delay: 6000,
+        }),
+      ],
+    });
+  }
+
+  initAutoplayCarousel();
+
+  document.addEventListener("astro:after-swap", initAutoplayCarousel);
+</script>

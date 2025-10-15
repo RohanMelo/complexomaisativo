@@ -1,0 +1,101 @@
+---
+export interface BenefitItem {
+  title: string;
+  description: string;
+}
+
+export interface Props {
+  id?: string;
+  title?: string;
+  highlight?: string;
+  items?: BenefitItem[];
+  class?: string;
+}
+
+const {
+  id = "beneficios",
+  title = "Por que fazer sua Limpeza de Pele na",
+  highlight = "Mais Estética?",
+  class: className = "",
+  items = [
+    {
+      title: "Protocolo Personalizado",
+      description:
+        "Tratamento adaptado para todos os tipos de pele, desde as mais sensíveis até as oleosas e acneicas.",
+    },
+    {
+      title: "Preço Promocional",
+      description:
+        "Valor especial de inauguração (limitado a 20 clientes) para você experimentar nosso serviço premium.",
+    },
+    {
+      title: "Especialista Experiente",
+      description:
+        "Atendimento por profissional com anos de experiência e formação universitária em estética.",
+    },
+    {
+      title: "Momento de Autocuidado",
+      description:
+        "Dedique um tempo para você em um ambiente projetado para relaxamento e bem-estar.",
+    },
+    {
+      title: "Ambiente Premium",
+      description:
+        "Clínica climatizada e reservada dentro do Complexo Mais Ativo, com fácil acesso e estacionamento.",
+    },
+    {
+      title: "Conveniência",
+      description:
+        "Localização privilegiada na Aldeota, com horários flexíveis para atender sua rotina.",
+    },
+  ],
+} = Astro.props;
+---
+
+<section
+  id={id}
+  class={`py-16 md:py-20 ${className}`}
+  style="background-color: var(--color-estetica-white);"
+  aria-labelledby={`${id}-title`}
+>
+  <div class="mx-auto w-[90%] max-w-container">
+    <header class="text-center mb-10 md:mb-12">
+      <h2
+        id={`${id}-title`}
+        class="inline-block text-2xl md:text-3xl font-bold text-[color:var(--color-estetica-dark)]"
+      >
+        {title} <span class="text-[color:var(--color-estetica-primary)]">{highlight}</span>
+      </h2>
+      <div
+        class="mx-auto mt-3 h-[3px] w-20 rounded-full"
+        style="background-color: var(--color-estetica-secondary);"
+      />
+    </header>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 max-w-[900px] mx-auto">
+      {items.map((item, idx) => {
+        const num = String(idx + 1).padStart(2, "0");
+        return (
+          <article
+            class="rounded-lg bg-[color:var(--color-estetica-white)] p-6 shadow-[0_5px_15px_rgba(0,0,0,0.08)]
+                   border-l-4 transition-transform duration-300 will-change-transform
+                   hover:-translate-y-2"
+            style="border-color: var(--color-estetica-primary);"
+          >
+            <h3 class="mb-3 flex items-center gap-3 text-lg font-semibold text-[color:var(--color-estetica-dark)]">
+              <span
+                class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold"
+                style="background-color: var(--color-estetica-primary); color: var(--color-estetica-white);"
+                aria-hidden="true"
+              >
+                {num}
+              </span>
+              {item.title}
+            </h3>
+            <p class="leading-relaxed text-[color:var(--color-estetica-dark)]/90">{item.description}</p>
+          </article>
+        );
+      })}
+    </div>
+  </div>
+</section>

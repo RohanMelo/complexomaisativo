@@ -1,0 +1,83 @@
+---
+// src/components/EsteticaHeader.astro
+import { Image } from "astro:assets";
+import logo from "../../assets/logo-estetica.png";
+
+export interface Props {
+  title?: string;
+  highlight?: string;
+  description?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  showLogo?: boolean;
+}
+
+const {
+  title = "Sua pele merece um",
+  highlight = "novo começo!",
+  description =
+    "Aproveite nossa Limpeza de Pele Profunda por apenas R$120, com atendimento exclusivo na Clínica Mais Estética, dentro do Complexo Mais Ativo — no coração da Aldeota.",
+  ctaText = "Quero agendar minha limpeza de pele agora!",
+  ctaHref = "https://wa.me/5585991803476",
+  showLogo = true,
+} = Astro.props;
+---
+
+<header
+  class="relative text-[color:var(--color-estetica-white)]"
+  style="background: var(--grad-estetica-header);"
+>
+  <div class="mx-auto w-[90%] max-w-container py-12 md:py-14 text-center">
+    {showLogo && (
+      <div class="mb-6">
+        <Image
+          src={logo}
+          alt="Mais Estética"
+          class="mx-auto h-40 md:h-44 lg:h-48 w-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)]"
+        />
+      </div>
+    )}
+
+    <h1
+      class="text-3xl md:text-4xl font-bold leading-tight tracking-tight
+             [text-shadow:0_2px_4px_rgba(0,0,0,0.2)]"
+    >
+      {title}{" "}
+      <span
+        class="rounded px-2 font-bold
+               bg-[color:var(--color-estetica-secondary)]
+               text-[color:var(--color-estetica-white)]"
+      >
+        {highlight}
+      </span>
+    </h1>
+
+    <p class="mt-4 md:mt-5 max-w-2xl mx-auto text-base md:text-lg text-[color:var(--color-estetica-white)]/95">
+      {description}
+    </p>
+
+    <div class="mt-6 flex justify-center">
+      <a
+        href={ctaHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-full font-semibold
+           w-full sm:w-auto text-center
+           px-5 py-2.5 md:px-8 md:py-3
+           text-sm md:text-base leading-tight
+           whitespace-normal sm:whitespace-nowrap break-words
+           border-2 border-[color:var(--color-estetica-secondary)]
+           bg-[color:var(--color-estetica-secondary)]
+           text-[color:var(--color-estetica-white)]
+           shadow-[0_4px_12px_rgba(0,0,0,0.15)]
+           transition-all duration-300
+           hover:-translate-y-[3px]
+           hover:bg-transparent
+           hover:shadow-[0_6px_15px_rgba(0,0,0,0.2)]
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+      >
+        {ctaText}
+      </a>
+    </div>
+  </div>
+</header>

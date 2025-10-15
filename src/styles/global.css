@@ -10,12 +10,18 @@ html {
   --grad-feature-icon: linear-gradient(135deg, #e76a2c, #1a1a1a);
   --grad-special: linear-gradient(135deg, #1a1a1a, #1a2530);
   --grad-team: linear-gradient(135deg, #e76a2c, #1a1a1a);
+  --grad-estetica-header: linear-gradient(rgba(89, 155, 111, 0.95), rgba(89, 155, 111, 0.9)), url('https://images.unsplash.com/photo-1599351431403-68b6f243c519?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
   --color-primary: #1a1a1a;
   --color-secondary: #e76a2c;
   --color-accent: #e76a2c;
   --color-light: #f1faee;
   --color-dark: #1f2937;
   --color-grayx: #8d99ae;
+  --color-estetica-primary: #599b6f;
+  --color-estetica-secondary: #d19d7d;
+  --color-estetica-light: #c3d6d1;
+  --color-estetica-dark: #2d4a3d;
+  --color-estetica-white: #f0f7f5;
   --shadow-card: 0 5px 15px rgba(0,0,0,0.05);
   --shadow-cardLg: 0 15px 30px rgba(0,0,0,0.1);
   --max-width-container: 1200px;

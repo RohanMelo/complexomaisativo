@@ -1,0 +1,156 @@
+---
+// src/components/EsteticaTestimonials.astro
+import SectionTitle from "./SectionTitle.astro";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../starwind/carousel";
+
+export interface Testimonial {
+  quote: string;
+  name: string;
+  age?: string;
+  src?: string; // optional avatar image
+}
+
+export interface Props {
+  id?: string;
+  title?: string;
+  subtitle?: string;
+  items?: Testimonial[];
+  class?: string;
+}
+
+const {
+  id = "depoimentos",
+  title = "O que dizem nossos clientes",
+  subtitle = "",
+  class: className = "",
+  items = [
+    {
+      quote:
+        "Nunca imaginei que uma limpeza de pele pudesse ser tão relaxante. Amei a experiência e já agendei a próxima!",
+      name: "Bruna Ferreira",
+      age: "30 anos",
+    },
+    {
+      quote:
+        "O atendimento foi impecável! Profissionalismo e cuidado em cada detalhe. Eu ainda indiquei pra duas pessoas lá da empresa.",
+      name: "Joabas Silva",
+      age: "27 anos",
+    },
+    {
+      quote:
+        "Adorei a limpeza de pele! A profissional explicou tudo com calma, indicou ótimos produtos com bom custo-benefício e com certeza voltarei.",
+      name: "Danielle Martins",
+      age: "19 anos",
+    },
+  ],
+} = Astro.props;
+
+const getInitials = (full: string) =>
+  full
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((s) => s[0]?.toUpperCase() ?? "")
+    .join("");
+---
+
+<section
+  id={id}
+  class={`py-16 md:py-20 ${className}`}
+  style="background-color: var(--color-estetica-white);"
+>
+  <div class="mx-auto w-[90%] max-w-container">
+    <SectionTitle title={title} subtitle={subtitle} />
+
+    <Carousel
+      id="estetica-testimonials"
+      autoInit={false}
+      opts={{ align: "start", loop: true }}
+      class="mx-auto w-full max-w-lg sm:max-w-xl"
+    >
+      <CarouselContent>
+        {
+          items.map((t) => (
+            <CarouselItem>
+              <article
+                class="relative h-[280px] md:h-[220px] rounded-lg p-6 shadow-[0_5px_15px_rgba(0,0,0,0.08)] flex flex-col justify-between
+                       bg-[color:var(--color-estetica-light)] border-t-4 grid grid-rows-[1fr_auto]"
+                style="border-top-color: var(--color-estetica-primary);"
+              >
+                <span
+                  class="absolute top-2 left-4 text-6xl font-serif select-none leading-none"
+                  style="color: var(--color-estetica-primary); opacity:.25;"
+                  aria-hidden="true"
+                >
+                  "
+                </span>
+
+                <div class="relative z-[1]">
+                  <p class="text-lg text-[color:var(--color-estetica-dark)]">
+                    {`"${t.quote}"`}
+                  </p>
+                </div>
+
+                <div class="mt-6 flex items-center gap-4">
+                  <div
+                    class="grid h-14 w-14 place-items-center rounded-full text-base font-bold text-[color:var(--color-estetica-white)] overflow-hidden"
+                    style="background-color: var(--color-estetica-primary);"
+                    aria-hidden="true"
+                  >
+                    {t.src ? (
+                      <img
+                        src={t.src}
+                        alt={t.name}
+                        class="h-full w-full object-cover"
+                      />
+                    ) : (
+                      getInitials(t.name)
+                    )}
+                  </div>
+                  <div class="leading-snug">
+                    <strong class="block text-[color:var(--color-estetica-dark)]">
+                      {t.name}
+                    </strong>
+                    {t.age && (
+                      <span class="text-sm text-[color:var(--color-estetica-dark)]/80">
+                        {t.age}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </article>
+            </CarouselItem>
+          ))
+        }
+      </CarouselContent>
+
+      
+    </Carousel>
+  </div>
+</section>
+
+<script>
+  import Autoplay from "embla-carousel-autoplay";
+  import { initCarousel } from "@/components/starwind/carousel";
+
+  function initAutoplayCarousel() {
+    const carouselElement = document.getElementById("estetica-testimonials");
+    if (!carouselElement) return;
+    initCarousel(carouselElement, {
+      plugins: [
+        Autoplay({
+          delay: 6000,
+        }),
+      ],
+    });
+  }
+
+  initAutoplayCarousel();
+  document.addEventListener("astro:after-swap", initAutoplayCarousel);
+</script>

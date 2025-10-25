@@ -11,6 +11,9 @@ import {
 import avatarMauro from "../assets/avatar-mauro.png";
 import avatarNico from "../assets/avatar-nico.png";
 import avatarWilma from "../assets/avatar-wilma.png";
+import avatar01 from "../assets/avatar-01.png";
+import avatar02 from "../assets/avatar-02.png";
+import avatar03 from "../assets/avatar-03.png";
 const items = [
   {
     quote:
@@ -24,14 +27,14 @@ const items = [
       "Como idosa com osteoporose, encontrei no Complexo Mais Ativo um lugar onde me sinto segura e acompanhada. Melhorei meu equilíbrio e força em poucos meses.",
     name: "Maria Oliveira",
     role: "Aluna há 1 ano",
-    src: "https://i.pravatar.cc/150",
+    src: avatar02.src,
   },
   {
     quote:
       "Consegui controlar minha diabetes tipo 2 com a combinação de exercícios orientados e acompanhamento nutricional. Minha glicemia nunca esteve tão estável!",
     name: "Roberta Santos",
     role: "Aluna há 8 meses",
-    src: "https://i.pravatar.cc/150?img=3",
+    src: avatar03.src,
   },
   {
     quote: "Sentia muitas dores por uma hérnia extrusa e foi feito todo um trabalho de fortalecimento me permitindo hj fazer qualquer atividade física",
@@ -47,9 +50,9 @@ const items = [
   },
   {
     quote: "Uma verdadeira academia e centro de bem-estar! O complexo mais ativo se dedica a entender as necessidades físicas e mentais de cada cliente.",
-    name: "Felipe Costa",
-    role: "Aluno há 2 anos",
-    src: "https://i.pravatar.cc/150"
+    name: "Ana Costa",
+    role: "Aluna há 2 anos",
+    src: avatar01.src
   }
 ];
 ---
@@ -85,13 +88,14 @@ const items = [
                 <div class="relative z-[1]">
                   <p class="text-white/90">{`"${t.quote}"`}</p>
                   <div class="flex items-center mt-6">
-                    <div class="w-14 h-14 rounded-full bg-light text-primary flex items-center justify-center text-2xl mr-4">
-                      <img
-                        src={t.src}
-                        alt="avatar"
-                        class="object-contain rounded-full"
-                      />
-                    </div>
+                    <div class="w-14 h-14 rounded-full bg-light text-primary flex items-center justify-center overflow-hidden mr-4 shrink-0">
+  <img
+    src={t.src}
+    alt="avatar"
+    class="w-full h-full object-cover rounded-full"
+    loading="lazy"
+  />
+</div>
                     <div>
                       <strong class="block">{t.name}</strong>
                       <div class="text-white/80 text-sm">{t.role}</div>

@@ -9,6 +9,5 @@ export default defineConfig({
 	vite: {
     plugins: [tailwindcss()]
   },
-  site: 'https://rohanmelo.github.io/',
-  base: '/complexomaisativo'
+  site: 'https://complexomaisativo.com.br/',
 });

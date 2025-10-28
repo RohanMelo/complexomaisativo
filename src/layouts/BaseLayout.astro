@@ -1,8 +1,9 @@
 ---
 const { title = "Complexo Mais Ativo", description = "" } = Astro.props;
-import '@/styles/global.css';
+import "@/styles/global.css";
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="pt-br" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
@@ -10,16 +11,30 @@ import '@/styles/global.css';
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-17382530036"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "AW-17382530036");
+    </script>
     <link
       rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      as="style" onload="this.onload=null;this.rel='stylesheet'"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
-    <noscript><link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"      
-    /></noscript>
-    
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      /></noscript
+    >
   </head>
   <body class="bg-white text-gray-800 antialiased">
     <slot />
